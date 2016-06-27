@@ -25,15 +25,14 @@ exports.list = function(req, res, next){
         if (_error){
             sendJsonResponse(res, 400, { message: 'error', error: _error });
         }else{
-            console.log(_users);
-            sendJsonResponse(res, 200, { users: _users } );
+            sendJsonResponse(res, 200, { users: UserSerializer.simpleUser( _users ) } );
         }
     });
 
 };
 
 exports.show = function(req, res, next){
-    User.showUser(id, function (_error, _user) {
+    User.showUser(req.params.id, function (_error, _user) {
         if (_error){
             sendJsonResponse(res, 400, { message: 'user not found', error: _error });
         }else{

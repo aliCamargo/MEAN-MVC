@@ -34,8 +34,8 @@ module.exports = function(app, express){
         //-- users paths
         app.get('/users', api.UsersController.list);
         // app.get('/user/:id', api.UsersController.get_user, api.users.show);
-        app.get('/user/:id', api.UsersController.show);
         app.post('/users', api.UsersController.create);
+        app.get('/user/:id', api.UsersController.show);
         app.put('/user/:id', api.UsersController.update);
         app.delete('/user/:id', api.UsersController.destroy);
 

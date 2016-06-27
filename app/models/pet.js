@@ -7,7 +7,8 @@ var mongoose = require('mongoose');
 var petSchema = mongoose.Schema(
     {
         name        : { type: String, required: true },
-        date_bird   : { type: Date, required: true }
+        date_bird   : { type: Date, required: true },
+        user        : {type : mongoose.Schema.ObjectId, ref : 'User'}
     },
     { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }
 );
@@ -15,11 +16,11 @@ var petSchema = mongoose.Schema(
 var Pet = module.exports = mongoose.model('Pet', petSchema);
 
 module.exports.showPet = function(id, callback) {
-    Pet.findById(id, callback);
+    Pet.findById(id, callback).populate('user');
 };
 
 module.exports.listPets = function(query, callback) {
-    Pet.find(query, callback);
+    Pet.find(query, callback).populate('user', 'surname' );
 };
 
 module.exports.createPet = function(params, callback){

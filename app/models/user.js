@@ -23,7 +23,7 @@ module.exports.showUser = function(id, callback) {
 };
 
 module.exports.listUsers = function(query, callback) {
-    User.find(query, callback);
+    User.find(query, callback).populate('pets');
 };
 
 module.exports.getUserByUsername = function(username, callback) {
@@ -36,9 +36,9 @@ module.exports.createUser = function(params, callback){
 };
 
 module.exports.deleteUser = function(id, callback){
-    User.findByIdAndRemove(id, callback)
+    User.findByIdAndRemove(id, callback);
 };
 
 module.exports.updateUser = function(id, params, callback){
-    User.findByIdAndUpdate(id, { $set: params}, callback)
+    User.findByIdAndUpdate(id, { $set: params}, callback);
 };
