@@ -28,6 +28,10 @@ module.exports = function(app, express){
     * API routers
     * */
     app.namespace('/api', function(){
+        //-- auth paths
+        app.post('/register', api.AuthenticationController.register);
+        app.post('/login', api.AuthenticationController.login);
+
         //-- root path
         app.get('/', api.ApiController.index);
 
