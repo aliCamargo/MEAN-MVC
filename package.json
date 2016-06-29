@@ -13,6 +13,7 @@
     "dotenv": "^2.0.0",
     "ejs": "~2.4.1",
     "express": "~4.13.4",
+    "express-jwt": "^3.4.0",
     "express-namespace": "^0.1.1",
     "jsonwebtoken": "^7.0.1",
     "mongoose": "^4.5.1",

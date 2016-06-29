@@ -46,7 +46,8 @@ exports.login = function(req, res, next){
         if(user){
             token = user.generateJwt();
             sendJsonResponse(res, 200, {
-                "token" : token
+                token   : token,
+                user    : UserSerializer.loginUser( user )
             });
         } else {
             sendJsonResponse(res, 401, info);

@@ -20,7 +20,7 @@ exports.get_user = function(req, res, next){
 };
 
 exports.list = function(req, res, next){
-    // console.log(User)
+    console.log(req.current_user);
     User.listUsers({}, function (_error, _users) {
         if (_error){
             sendJsonResponse(res, 400, { message: 'error', error: _error });

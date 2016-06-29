@@ -3,6 +3,7 @@
  */
 
 require('./boot'); //-- Load controllers
+var auth = require('./../middleware/auth');
 
 module.exports = function(app, express){
 
@@ -31,7 +32,9 @@ module.exports = function(app, express){
         //-- auth paths
         app.post('/register', api.AuthenticationController.register);
         app.post('/login', api.AuthenticationController.login);
+    });
 
+    app.namespace('/api', auth, function(){
         //-- root path
         app.get('/', api.ApiController.index);
 
