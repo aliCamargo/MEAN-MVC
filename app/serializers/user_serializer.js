@@ -10,7 +10,7 @@ exports.simpleUser = function(_users, current_user_id){
     * params [its a params inject on function]
     * */
     var custom_attribute = function(object, params ){
-        return "param -> " + object.name  + ' --- ' + params.current_user_id;
+        return "param -> " + object.hobbies  + ' --- ' + params.current_user_id;
     };
 
     return Serializer( _users, [
