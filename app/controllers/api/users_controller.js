@@ -20,12 +20,12 @@ exports.get_user = function(req, res, next){
 };
 
 exports.list = function(req, res, next){
-    console.log(req.current_user);
+    // console.log(req.current_user);
     User.listUsers({}, function (_error, _users) {
         if (_error){
             sendJsonResponse(res, 400, { message: 'error', error: _error });
         }else{
-            sendJsonResponse(res, 200, { users: UserSerializer.simpleUser( _users ) } );
+            sendJsonResponse(res, 200, { users: UserSerializer.simpleUser( _users, req.current_user._id ) } );
         }
     });
 
